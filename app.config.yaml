@@ -21,6 +21,51 @@ application:
             annotations:
               require-adobe-auth: false
               final: true
+          setup-collections:
+            function: actions/setup-collections/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            include-ims-credentials: true
+            inputs:
+              LOG_LEVEL: debug
+              IMS_OAUTH_S2S_CLIENT_ID: $IMS_OAUTH_S2S_CLIENT_ID
+              IMS_OAUTH_S2S_CLIENT_SECRET: $IMS_OAUTH_S2S_CLIENT_SECRET
+              IMS_OAUTH_S2S_ORG_ID: $IMS_OAUTH_S2S_ORG_ID
+              IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
+              IMS_TOKEN_URL: $IMS_TOKEN_URL
+            annotations:
+              require-adobe-auth: false
+              final: true
+          save-badge-rule:
+            function: actions/save-badge-rule/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            include-ims-credentials: true
+            inputs:
+              LOG_LEVEL: debug
+              IMS_OAUTH_S2S_CLIENT_ID: $IMS_OAUTH_S2S_CLIENT_ID
+              IMS_OAUTH_S2S_CLIENT_SECRET: $IMS_OAUTH_S2S_CLIENT_SECRET
+              IMS_OAUTH_S2S_ORG_ID: $IMS_OAUTH_S2S_ORG_ID
+              IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
+              IMS_TOKEN_URL: $IMS_TOKEN_URL
+            annotations:
+              require-adobe-auth: false
+              final: true
+          get-badge-rules:
+            function: actions/get-badge-rules/index.js
+            web: 'yes'
+            runtime: nodejs:22
+            include-ims-credentials: true
+            inputs:
+              LOG_LEVEL: debug
+              IMS_OAUTH_S2S_CLIENT_ID: $IMS_OAUTH_S2S_CLIENT_ID
+              IMS_OAUTH_S2S_CLIENT_SECRET: $IMS_OAUTH_S2S_CLIENT_SECRET
+              IMS_OAUTH_S2S_ORG_ID: $IMS_OAUTH_S2S_ORG_ID
+              IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
+              IMS_TOKEN_URL: $IMS_TOKEN_URL
+            annotations:
+              require-adobe-auth: false
+              final: true
     database:
       auto-provision: false
       region: amer
