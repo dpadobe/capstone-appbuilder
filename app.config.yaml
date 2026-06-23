@@ -10,9 +10,17 @@ application:
             function: actions/product-badge/index.js
             web: 'yes'
             runtime: nodejs:22
+            include-ims-credentials: true
             inputs:
               LOG_LEVEL: debug
-              apiKey: $SERVICE_API_KEY
+              IMS_OAUTH_S2S_CLIENT_ID: $IMS_OAUTH_S2S_CLIENT_ID
+              IMS_OAUTH_S2S_CLIENT_SECRET: $IMS_OAUTH_S2S_CLIENT_SECRET
+              IMS_OAUTH_S2S_ORG_ID: $IMS_OAUTH_S2S_ORG_ID
+              IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
+              IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
-              require-adobe-auth: true
+              require-adobe-auth: false
               final: true
+    database:
+      auto-provision: false
+      region: amer
