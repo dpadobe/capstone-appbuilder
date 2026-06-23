@@ -81,6 +81,22 @@ application:
             annotations:
               require-adobe-auth: false
               final: true
+          product-event-consumer:
+            function: actions/product-event-consumer/index.js
+            web: 'no'
+            runtime: nodejs:22
+            include-ims-credentials: true
+            inputs:
+              LOG_LEVEL: debug
+              IMS_OAUTH_S2S_CLIENT_ID: $IMS_OAUTH_S2S_CLIENT_ID
+              IMS_OAUTH_S2S_CLIENT_SECRET: $IMS_OAUTH_S2S_CLIENT_SECRET
+              IMS_OAUTH_S2S_ORG_ID: $IMS_OAUTH_S2S_ORG_ID
+              IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
+              IMS_TOKEN_URL: $IMS_TOKEN_URL
+              COMMERCE_API_BASE_URL: $COMMERCE_API_BASE_URL
+              COMMERCE_STORE_CODE: $COMMERCE_STORE_CODE
+            annotations:
+              final: true
     database:
       auto-provision: false
       region: amer
