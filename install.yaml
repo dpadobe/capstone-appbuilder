@@ -1,0 +1,14 @@
+$schema: http://json-schema.org/draft-07/schema
+$id: https://adobe.io/schemas/app-builder-templates/1
+categories:
+  - action
+  - ui
+extensions:
+  # Required for business configuration.
+  - extensionPointId: commerce/configuration/1
+
+  # Required for app management and Commerce compatibility check.
+  - extensionPointId: commerce/extensibility/1
+
+  # Admin UI SDK — renders Badge Manager in Commerce Admin left nav.
+  - extensionPointId: commerce/backend-ui/1

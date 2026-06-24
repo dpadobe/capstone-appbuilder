@@ -1,0 +1,36 @@
+{
+  "adminUiSdk": {
+    "registration": {
+      "menuItems": [
+        {
+          "id": "badge_manager::apps",
+          "isSection": true,
+          "sortOrder": 110,
+          "title": "Badge Manager"
+        },
+        {
+          "id": "badge_manager::admin",
+          "parent": "badge_manager::apps",
+          "sortOrder": 1,
+          "title": "Badge Admin"
+        }
+      ]
+    }
+  },
+  "businessConfig": {
+    "schema": [
+      {
+        "default": "",
+        "label": "Placeholder",
+        "name": "placeholder",
+        "type": "text"
+      }
+    ]
+  },
+  "metadata": {
+    "description": "Product badge manager for EDS storefront PDP",
+    "displayName": "Badge Manager",
+    "id": "badge-manager",
+    "version": "1.0.0"
+  }
+}
