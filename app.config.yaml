@@ -6,28 +6,15 @@ extensions:
     $include: src/commerce-extensibility-1/ext.config.yaml
 
   commerce/backend-ui/1:
-    operations:
-      view:
-        - type: web
-          impl: index.html
+    $include: src/commerce-backend-ui-1/ext.config.yaml
 
 application:
   actions: actions
-  web: web-src
   runtimeManifest:
     packages:
       capstone-appbuilder:
         license: Apache-2.0
         actions:
-          registration:
-            function: actions/registration/index.js
-            web: 'yes'
-            runtime: nodejs:22
-            inputs:
-              LOG_LEVEL: debug
-            annotations:
-              require-adobe-auth: true
-              final: true
           product-badge:
             function: actions/product-badge/index.js
             web: 'yes'
