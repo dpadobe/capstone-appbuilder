@@ -13,7 +13,8 @@ const BADGE_IDS = [
 
 const emptyForm = { sku: '', badge_id: 'on_sale', expires_at: '' }
 
-function StaticAssignments () {
+function StaticAssignments ({ ims }) {
+  const authHeader = ims?.token ? { Authorization: `Bearer ${ims.token}` } : {}
   const [assignments, setAssignments] = useState([])
   const [products, setProducts] = useState([])
   const [form, setForm] = useState(emptyForm)
@@ -60,7 +61,7 @@ function StaticAssignments () {
     }
 
     try {
-      await actionWebInvoke(actions['save-static-assignment'], {}, {
+      await actionWebInvoke(actions['save-static-assignment'], authHeader, {
         sku: form.sku,
         badge_id: form.badge_id,
         expires_at: form.expires_at || null
@@ -78,7 +79,7 @@ function StaticAssignments () {
     setLoadingData(true)
     setConfirmDeleteId(null)
     try {
-      await actionWebInvoke(actions['delete-static-assignment'], {}, { _id: id })
+      await actionWebInvoke(actions['delete-static-assignment'], authHeader, { _id: id })
       setMessage('Assignment deleted')
       await loadAssignments()
     } catch (e) {

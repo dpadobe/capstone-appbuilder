@@ -32,9 +32,9 @@ function App (props) {
             <SideBar />
             <div style={{ flex: 1, overflowY: 'auto', backgroundColor: '#f8f8f8' }}>
               <Routes>
-                <Route path='/' element={<BadgeRules />} />
-                <Route path='/assignments' element={<StaticAssignments />} />
-                <Route path='/monitor' element={<Monitor />} />
+                <Route path='/' element={<BadgeRules ims={props.ims} />} />
+                <Route path='/assignments' element={<StaticAssignments ims={props.ims} />} />
+                <Route path='/monitor' element={<Monitor ims={props.ims} />} />
               </Routes>
             </div>
           </div>

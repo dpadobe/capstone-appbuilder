@@ -28,7 +28,8 @@ function formatCondition (type, value) {
   return JSON.stringify(value)
 }
 
-function BadgeRules () {
+function BadgeRules ({ ims }) {
+  const authHeader = ims?.token ? { Authorization: `Bearer ${ims.token}` } : {}
   const [rules, setRules] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [message, setMessage] = useState('')
@@ -60,7 +61,7 @@ function BadgeRules () {
       if (form.condition_type === 'discount_pct') condition_value = { min: Number(form.min) }
       if (form.condition_type === 'recently_updated') condition_value = { hours: Number(form.hours) }
 
-      await actionWebInvoke(actions['save-badge-rule'], {}, {
+      await actionWebInvoke(actions['save-badge-rule'], authHeader, {
         name: form.name,
         priority: Number(form.priority),
         condition_type: form.condition_type,
@@ -80,7 +81,7 @@ function BadgeRules () {
     setLoadingData(true)
     setConfirmDeleteId(null)
     try {
-      await actionWebInvoke(actions['delete-badge-rule'], {}, { _id: id })
+      await actionWebInvoke(actions['delete-badge-rule'], authHeader, { _id: id })
       setMessage('Rule deleted')
       await loadRules()
     } catch (e) {
