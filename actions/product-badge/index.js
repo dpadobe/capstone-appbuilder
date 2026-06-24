@@ -3,22 +3,6 @@ const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')
 
-const ALLOWED_ORIGINS = [
-  'https://main--dpcom-storefront--dpadobe.aem.page',
-  'https://main--dpcom-storefront--dpadobe.aem.live',
-  'http://localhost:3000'
-]
-
-function corsHeaders (params) {
-  const origin = params.__ow_headers?.origin || ''
-  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]
-  return {
-    'Access-Control-Allow-Origin': allowedOrigin,
-    'Access-Control-Allow-Methods': 'GET',
-    'Access-Control-Allow-Headers': 'Content-Type'
-  }
-}
-
 async function main(params) {
   const logger = Core.Logger('product-badge', { level: params.LOG_LEVEL || 'info' })
 
@@ -29,7 +13,6 @@ async function main(params) {
     if (!sku) {
       return {
         statusCode: 400,
-        headers: corsHeaders(params),
         body: { status: 'error', message: 'Missing required param: sku' }
       }
     }
@@ -45,7 +28,6 @@ async function main(params) {
     if (!badgeState || !badgeState.badge_id) {
       return {
         statusCode: 200,
-        headers: corsHeaders(params),
         body: { status: 'ok', sku, badge_id: null, badge_label: null }
       }
     }
@@ -56,7 +38,6 @@ async function main(params) {
 
     return {
       statusCode: 200,
-      headers: corsHeaders(params),
       body: {
         status: 'ok',
         sku,
@@ -70,7 +51,6 @@ async function main(params) {
     logger.error(error)
     return {
       statusCode: 500,
-      headers: corsHeaders(params),
       body: { status: 'error', message: error.message }
     }
   }

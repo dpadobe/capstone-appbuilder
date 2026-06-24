@@ -43,7 +43,7 @@ application:
               IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
               IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
-              require-adobe-auth: true
+              require-adobe-auth: false
               final: true
           save-badge-rule:
             function: actions/save-badge-rule/index.js
@@ -58,7 +58,7 @@ application:
               IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
               IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
-              require-adobe-auth: true
+              require-adobe-auth: false
               final: true
           get-badge-rules:
             function: actions/get-badge-rules/index.js
@@ -88,7 +88,7 @@ application:
               IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
               IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
-              require-adobe-auth: true
+              require-adobe-auth: false
               final: true
           get-products:
             function: actions/get-products/index.js
@@ -119,7 +119,7 @@ application:
               IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
               IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
-              require-adobe-auth: true
+              require-adobe-auth: false
               final: true
           get-static-assignments:
             function: actions/get-static-assignments/index.js
@@ -149,7 +149,7 @@ application:
               IMS_OAUTH_S2S_SCOPES: $IMS_OAUTH_S2S_SCOPES
               IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
-              require-adobe-auth: true
+              require-adobe-auth: false
               final: true
           get-badge-catalog:
             function: actions/get-badge-catalog/index.js

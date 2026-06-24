@@ -28,8 +28,8 @@ function formatCondition (type, value) {
   return JSON.stringify(value)
 }
 
-function BadgeRules ({ ims }) {
-  const authHeader = ims?.token ? { Authorization: `Bearer ${ims.token}` } : {}
+function BadgeRules () {
+  const authHeader = {}
   const [rules, setRules] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [message, setMessage] = useState('')

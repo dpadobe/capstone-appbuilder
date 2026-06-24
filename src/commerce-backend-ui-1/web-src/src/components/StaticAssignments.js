@@ -13,8 +13,8 @@ const BADGE_IDS = [
 
 const emptyForm = { sku: '', badge_id: 'on_sale', expires_at: '' }
 
-function StaticAssignments ({ ims }) {
-  const authHeader = ims?.token ? { Authorization: `Bearer ${ims.token}` } : {}
+function StaticAssignments () {
+  const authHeader = {}
   const [assignments, setAssignments] = useState([])
   const [products, setProducts] = useState([])
   const [form, setForm] = useState(emptyForm)
