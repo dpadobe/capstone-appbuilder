@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { register } from '@adobe/uix-guest'
 import { Provider, defaultTheme } from '@adobe/react-spectrum'
 import ErrorBoundary from 'react-error-boundary'
@@ -11,9 +11,18 @@ import Monitor from './Monitor'
 const EXTENSION_ID = 'badge_manager'
 
 function App (props) {
+  const [imsToken, setImsToken] = useState(props.ims?.token || null)
+
   useEffect(() => {
     (async () => {
-      await register({ id: EXTENSION_ID, methods: {} })
+      const connection = await register({ id: EXTENSION_ID, methods: {} })
+      try {
+        const auth = await connection.host.sharedContext.get('auth')
+        const token = auth?.imsToken || auth?.token
+        if (token) setImsToken(token)
+      } catch (e) {
+        // fall back to exc-app token already in state
+      }
     })()
   }, [])
 
@@ -32,9 +41,9 @@ function App (props) {
             <SideBar />
             <div style={{ flex: 1, overflowY: 'auto', backgroundColor: '#f8f8f8' }}>
               <Routes>
-                <Route path='/' element={<BadgeRules ims={props.ims} />} />
-                <Route path='/assignments' element={<StaticAssignments ims={props.ims} />} />
-                <Route path='/monitor' element={<Monitor ims={props.ims} />} />
+                <Route path='/' element={<BadgeRules ims={{ token: imsToken }} />} />
+                <Route path='/assignments' element={<StaticAssignments ims={{ token: imsToken }} />} />
+                <Route path='/monitor' element={<Monitor ims={{ token: imsToken }} />} />
               </Routes>
             </div>
           </div>
