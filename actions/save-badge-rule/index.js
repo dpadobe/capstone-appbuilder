@@ -1,3 +1,4 @@
+// Creates a new badge rule (name, priority, condition_type, condition_value, badge_id) in badge_rules collection.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

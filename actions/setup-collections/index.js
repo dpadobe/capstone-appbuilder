@@ -1,8 +1,40 @@
+// One-time setup: creates all DB collections and seeds badge_catalog with initial badge definitions.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')
 
 const COLLECTIONS = ['badge_catalog', 'badge_rules', 'badge_state', 'badge_assignments', 'collection_data_versions']
+
+/*
+ * Collections / tables used by the Badge Manager:
+ *
+ * badge_catalog
+ *   Master list of available badges. Created at setup time.
+ *   Fields: badge_id (string, unique), label (string), color (hex string), description (string)
+ *   Example: { badge_id: "hot_deal", label: "Hot Deal", color: "#e63535", description: "High discount product" }
+ *
+ * badge_rules
+ *   Admin-defined rules that auto-assign badges when a product is saved.
+ *   Fields: name, priority (int, lower = higher priority), condition_type (price_between | discount_pct | recently_updated),
+ *           condition_value (json object depends on condition_type), badge_id, created_at
+ *   Example: { name: "Sale Items", priority: 1, condition_type: "discount_pct", condition_value: { min: 20 }, badge_id: "on_sale" }
+ *
+ * badge_state
+ *   Evaluated badge result per SKU. Written by product-event-consumer on every product.save event.
+ *   Fields: sku (unique), badge_id, source ("rule" | "static" | "none"), rule_name, evaluated_at
+ *   Example: { sku: "HPC-6006", badge_id: "hot_deal", source: "rule", rule_name: "Sale Items", evaluated_at: ISODate }
+ *
+ * badge_assignments
+ *   Manual by admin, badge override per SKU. Takes effect only when no rule matches.
+ *   Fields: sku (unique), badge_id, expires_at (optional), assigned_at
+ *   Example: { sku: "HPC-1001", badge_id: "staff_pick", expires_at: null, assigned_at: ISODate }
+ *
+ * collection_data_versions
+ *   Tracks which seed data version has been applied per collection. Prevents duplicate seeding on re-deploy.
+ *   Fields: collection_name (unique), version (string e.g. "v1"), applied_at
+ *   Example: { collection_name: "badge_catalog", version: "v1", applied_at: given date }
+ *   An attempt to create an installer similar to PAAS commerce, this is WIP and required further enhancements
+ */
 
 const BADGE_CATALOG_VERSION = 'v1'
 

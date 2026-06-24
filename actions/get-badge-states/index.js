@@ -1,3 +1,4 @@
+// Returns all evaluated badge state records from badge_state sorted by evaluated_at descending.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

@@ -1,3 +1,4 @@
+// Returns all badge rules from badge_rules collection sorted by priority ascending.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

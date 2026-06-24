@@ -1,3 +1,4 @@
+// Proxies Commerce REST to return product list (sku, name) for Admin UI dropdowns; required to avoid browser CORS restrictions.
 const { Core } = require('@adobe/aio-sdk')
 const fetch = require('node-fetch')
 const { generateAccessToken } = require('../auth')

@@ -1,3 +1,4 @@
+// Returns all manual badge assignments from badge_assignments collection.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

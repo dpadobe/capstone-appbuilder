@@ -1,3 +1,5 @@
+// Non-web event listener: triggered on Commerce product.save, evaluates badge rules in priority order, falls back to static assignment
+// writes result to badge_state.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const fetch = require('node-fetch')

@@ -1,3 +1,4 @@
+// Returns all badge definitions from badge_catalog (id, label, color, description).
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

@@ -1,3 +1,4 @@
+// Upserts a manual badge assignment for a SKU in badge_assignments; returns 201 on create, 200 on update.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

@@ -1,3 +1,4 @@
+// Public-facing action: accepts a SKU query param, reads badge_state, and returns the resolved badge label for PDP display.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { generateAccessToken } = require('../auth')

@@ -1,3 +1,4 @@
+// Deletes a badge rule from badge_rules by _id.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { ObjectId } = require('bson')

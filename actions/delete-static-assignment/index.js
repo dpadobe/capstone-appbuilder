@@ -1,3 +1,4 @@
+// Deletes a manual badge assignment from badge_assignments by _id.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
 const { ObjectId } = require('bson')
