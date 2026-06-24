@@ -3,6 +3,7 @@ import actionWebInvoke from '../utils'
 import actions from '../actions'
 import Spinner from './Spinner'
 import BadgeChip from './BadgeChip'
+import { IconActivity, IconRefresh } from '@tabler/icons-react'
 
 function Monitor () {
   const [badgeStates, setBadgeStates] = useState([])
@@ -28,7 +29,7 @@ function Monitor () {
       {message && <div className='bm-msg bm-msg--error'>{message}</div>}
 
       <div className='bm-section-header'>
-        <span className='bm-section-pill'>◉ Active badges</span>
+        <span className='bm-section-pill'><IconActivity size={12} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Active badges</span>
         <span className='bm-section-line' />
       </div>
 
@@ -37,7 +38,7 @@ function Monitor () {
           Current badge per product. Updated each time a product is saved in Commerce.
         </p>
         <button className='bm-btn-secondary' onClick={loadBadgeStates} disabled={loading}>
-          {loading ? 'Refreshing...' : '↻ Refresh'}
+          <IconRefresh size={14} style={{ verticalAlign: '-2px', marginRight: '5px' }} />{loading ? 'Refreshing...' : 'Refresh'}
         </button>
 
         {loading && <Spinner />}

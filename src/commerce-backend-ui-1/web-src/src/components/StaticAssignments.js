@@ -3,6 +3,8 @@ import actionWebInvoke from '../utils'
 import actions from '../actions'
 import Spinner from './Spinner'
 import BadgeChip from './BadgeChip'
+import { IconPlus, IconList, IconDeviceFloppy, IconTrash } from '@tabler/icons-react'
+import ConfirmModal from './ConfirmModal'
 
 const BADGE_IDS = [
   'on_sale', 'hot_deal', 'clearance', 'christmas_sale', 'black_friday',
@@ -16,7 +18,9 @@ function StaticAssignments () {
   const [products, setProducts] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loadingData, setLoadingData] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null)
 
   useEffect(() => {
     loadAssignments()
@@ -24,7 +28,7 @@ function StaticAssignments () {
   }, [])
 
   async function loadAssignments () {
-    setLoading(true)
+    setLoadingData(true)
     setAssignments([])
     try {
       const res = await actionWebInvoke(actions['get-static-assignments'], {}, {}, { method: 'GET' })
@@ -32,7 +36,7 @@ function StaticAssignments () {
     } catch (e) {
       setMessage('Error loading assignments: ' + e.message)
     }
-    setLoading(false)
+    setLoadingData(false)
   }
 
   async function loadProducts () {
@@ -46,13 +50,13 @@ function StaticAssignments () {
 
   async function saveAssignment (e) {
     e.preventDefault()
-    setLoading(true)
+    setSaving(true)
     setMessage('')
 
     const existing = assignments.find(a => a.sku === form.sku)
     if (existing) {
       const confirmed = window.confirm('A badge assignment already exists for this product. Do you want to replace it?')
-      if (!confirmed) { setLoading(false); return }
+      if (!confirmed) { setSaving(false); return }
     }
 
     try {
@@ -67,12 +71,12 @@ function StaticAssignments () {
     } catch (e) {
       setMessage('Error saving assignment: ' + e.message)
     }
-    setLoading(false)
+    setSaving(false)
   }
 
   async function deleteAssignment (id) {
-    if (!window.confirm('Delete this assignment?')) return
-    setLoading(true)
+    setLoadingData(true)
+    setConfirmDeleteId(null)
     try {
       await actionWebInvoke(actions['delete-static-assignment'], {}, { _id: id })
       setMessage('Assignment deleted')
@@ -80,11 +84,18 @@ function StaticAssignments () {
     } catch (e) {
       setMessage('Error deleting assignment: ' + e.message)
     }
-    setLoading(false)
+    setLoadingData(false)
   }
 
   return (
     <div className='bm-page'>
+      {confirmDeleteId && (
+        <ConfirmModal
+          message='Delete this assignment? This action cannot be undone.'
+          onConfirm={() => deleteAssignment(confirmDeleteId)}
+          onCancel={() => setConfirmDeleteId(null)}
+        />
+      )}
       {message && (
         <div className={`bm-msg ${message.includes('Error') ? 'bm-msg--error' : 'bm-msg--success'}`}>
           {message}
@@ -92,7 +103,7 @@ function StaticAssignments () {
       )}
 
       <div className='bm-section-header'>
-        <span className='bm-section-pill'>+ Assign badge to product</span>
+        <span className='bm-section-pill'><IconPlus size={12} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Assign badge to product</span>
         <span className='bm-section-line' />
       </div>
 
@@ -121,22 +132,22 @@ function StaticAssignments () {
             <div />
           </div>
           <div className='bm-action-row'>
-            <button type='submit' className='bm-btn-save' disabled={loading}>
-              {loading ? 'Saving...' : '💾 Save assignment'}
+            <button type='submit' className='bm-btn-save' disabled={saving}>
+              {saving ? 'Saving...' : <><IconDeviceFloppy size={15} style={{ verticalAlign: '-3px', marginRight: '5px' }} />Save assignment</>}
             </button>
           </div>
         </form>
       </div>
 
       <div className='bm-section-header'>
-        <span className='bm-section-pill'>☰ Existing assignments</span>
+        <span className='bm-section-pill'><IconList size={12} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Existing assignments</span>
         <span className='bm-section-line' />
       </div>
 
       <div className='bm-card'>
-        {loading && <Spinner />}
-        {!loading && assignments.length === 0 && <p className='bm-empty'>No manual assignments yet.</p>}
-        {!loading && assignments.length > 0 && (
+        {loadingData && <Spinner />}
+        {!loadingData && assignments.length === 0 && <p className='bm-empty'>No manual assignments yet.</p>}
+        {!loadingData && assignments.length > 0 && (
           <table className='bm-table'>
             <thead>
               <tr>
@@ -144,7 +155,7 @@ function StaticAssignments () {
                 <th>Badge</th>
                 <th>Expires at</th>
                 <th>Assigned at</th>
-                <th></th>
+                <th className='bm-table-action'></th>
               </tr>
             </thead>
             <tbody>
@@ -154,9 +165,9 @@ function StaticAssignments () {
                   <td><BadgeChip badgeId={a.badge_id} /></td>
                   <td className='bm-table-muted'>{a.expires_at ? new Date(a.expires_at).toLocaleDateString() : '—'}</td>
                   <td className='bm-table-muted'>{new Date(a.assigned_at).toLocaleDateString()}</td>
-                  <td>
-                    <button className='bm-btn-delete' onClick={() => deleteAssignment(a._id)}>
-                      🗑 Delete
+                  <td className='bm-table-action'>
+                    <button className='bm-btn-delete' onClick={() => setConfirmDeleteId(a._id)}>
+                      <IconTrash size={13} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Delete
                     </button>
                   </td>
                 </tr>

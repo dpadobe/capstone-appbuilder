@@ -3,6 +3,8 @@ import actionWebInvoke from '../utils'
 import actions from '../actions'
 import Spinner from './Spinner'
 import BadgeChip from './BadgeChip'
+import { IconPlus, IconList, IconDeviceFloppy, IconTrash } from '@tabler/icons-react'
+import ConfirmModal from './ConfirmModal'
 
 const CONDITION_TYPES = [
   { value: 'price_between', label: 'Price Between' },
@@ -30,12 +32,14 @@ function BadgeRules () {
   const [rules, setRules] = useState([])
   const [form, setForm] = useState(emptyForm)
   const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [loadingData, setLoadingData] = useState(false)
+  const [saving, setSaving] = useState(false)
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null)
 
   useEffect(() => { loadRules() }, [])
 
   async function loadRules () {
-    setLoading(true)
+    setLoadingData(true)
     setRules([])
     try {
       const res = await actionWebInvoke(actions['get-badge-rules'], {}, {}, { method: 'GET' })
@@ -43,12 +47,12 @@ function BadgeRules () {
     } catch (e) {
       setMessage('Error loading rules: ' + e.message)
     }
-    setLoading(false)
+    setLoadingData(false)
   }
 
   async function saveRule (e) {
     e.preventDefault()
-    setLoading(true)
+    setSaving(true)
     setMessage('')
     try {
       let condition_value = {}
@@ -69,12 +73,12 @@ function BadgeRules () {
     } catch (e) {
       setMessage('Error saving rule: ' + e.message)
     }
-    setLoading(false)
+    setSaving(false)
   }
 
   async function deleteRule (id) {
-    if (!window.confirm('Delete this rule?')) return
-    setLoading(true)
+    setLoadingData(true)
+    setConfirmDeleteId(null)
     try {
       await actionWebInvoke(actions['delete-badge-rule'], {}, { _id: id })
       setMessage('Rule deleted')
@@ -82,11 +86,18 @@ function BadgeRules () {
     } catch (e) {
       setMessage('Error deleting rule: ' + e.message)
     }
-    setLoading(false)
+    setLoadingData(false)
   }
 
   return (
     <div className='bm-page'>
+      {confirmDeleteId && (
+        <ConfirmModal
+          message='Delete this rule? This action cannot be undone.'
+          onConfirm={() => deleteRule(confirmDeleteId)}
+          onCancel={() => setConfirmDeleteId(null)}
+        />
+      )}
       {message && (
         <div className={`bm-msg ${message.includes('Error') ? 'bm-msg--error' : 'bm-msg--success'}`}>
           {message}
@@ -94,7 +105,7 @@ function BadgeRules () {
       )}
 
       <div className='bm-section-header'>
-        <span className='bm-section-pill'>+ Add new rule</span>
+        <span className='bm-section-pill'><IconPlus size={12} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Add new rule</span>
         <span className='bm-section-line' />
       </div>
 
@@ -155,8 +166,8 @@ function BadgeRules () {
             </div>
           )}
           <div className='bm-action-row'>
-            <button type='submit' className='bm-btn-save' disabled={loading}>
-              {loading ? 'Saving...' : '💾 Save rule'}
+            <button type='submit' className='bm-btn-save' disabled={saving}>
+              {saving ? 'Saving...' : <><IconDeviceFloppy size={15} style={{ verticalAlign: '-3px', marginRight: '5px' }} />Save rule</>}
             </button>
           </div>
           <p className='bm-hint'>New rules apply on next product save. Bulk apply is a future enhancement.</p>
@@ -164,14 +175,14 @@ function BadgeRules () {
       </div>
 
       <div className='bm-section-header'>
-        <span className='bm-section-pill'>☰ Existing rules</span>
+        <span className='bm-section-pill'><IconList size={12} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Existing rules</span>
         <span className='bm-section-line' />
       </div>
 
       <div className='bm-card'>
-        {loading && <Spinner />}
-        {!loading && rules.length === 0 && <p className='bm-empty'>No rules defined yet.</p>}
-        {!loading && rules.length > 0 && (
+        {loadingData && <Spinner />}
+        {!loadingData && rules.length === 0 && <p className='bm-empty'>No rules defined yet.</p>}
+        {!loadingData && rules.length > 0 && (
           <table className='bm-table'>
             <thead>
               <tr>
@@ -180,7 +191,7 @@ function BadgeRules () {
                 <th>Condition</th>
                 <th>Badge</th>
                 <th>Created</th>
-                <th></th>
+                <th className='bm-table-action'></th>
               </tr>
             </thead>
             <tbody>
@@ -191,9 +202,9 @@ function BadgeRules () {
                   <td className='bm-table-muted'>{formatCondition(rule.condition_type, rule.condition_value)}</td>
                   <td><BadgeChip badgeId={rule.badge_id} /></td>
                   <td className='bm-table-muted'>{new Date(rule.created_at).toLocaleDateString()}</td>
-                  <td>
-                    <button className='bm-btn-delete' onClick={() => deleteRule(rule._id)}>
-                      🗑 Delete
+                  <td className='bm-table-action'>
+                    <button className='bm-btn-delete' onClick={() => setConfirmDeleteId(rule._id)}>
+                      <IconTrash size={13} style={{ verticalAlign: '-2px', marginRight: '4px' }} />Delete
                     </button>
                   </td>
                 </tr>

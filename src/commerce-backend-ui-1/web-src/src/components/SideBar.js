@@ -1,11 +1,12 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { IconTag } from '@tabler/icons-react'
 
 function SideBar () {
   return (
     <nav className='bm-nav'>
       <div className='bm-nav-brand'>
-        <div className='bm-nav-logo'>🏷</div>
+        <div className='bm-nav-logo'><IconTag size={15} /></div>
         Badge Manager
       </div>
       <NavLink end to='/' className={({ isActive }) => `bm-nav-tab${isActive ? ' active' : ''}`}>
