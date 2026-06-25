@@ -1,4 +1,4 @@
-<svg viewBox="0 0 900 720" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,monospace" font-size="12">
+<svg viewBox="0 0 1440 635" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace,monospace" font-size="13">
   <defs>
     <marker id="ab" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#8fa3e0"/></marker>
     <marker id="ag" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2e7d52"/></marker>
@@ -6,120 +6,129 @@
     <marker id="ag2" markerWidth="7" markerHeight="7" refX="1" refY="3" orient="auto-start-reverse"><path d="M0,0 L0,6 L7,3 z" fill="#2e7d52"/></marker>
   </defs>
 
-  <!-- Surface backgrounds -->
-  <rect x="10" y="10" width="190" height="700" rx="8" fill="#f0f4ff" stroke="#c5d0f0" stroke-width="1.5"/>
-  <text x="105" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="#4a5fa8" letter-spacing="0.8">COMMERCE ADMIN</text>
+  <!-- ── SURFACE PANELS ─────────────────────────────────────────── -->
+  <rect x="10"   y="10" width="268"  height="615" rx="10" fill="#f0f4ff" stroke="#c5d0f0" stroke-width="1.5"/>
+  <text x="144"  y="31" text-anchor="middle" font-size="11" font-weight="700" fill="#4a5fa8" letter-spacing="1">COMMERCE ADMIN</text>
 
-  <rect x="212" y="10" width="476" height="700" rx="8" fill="#f0faf3" stroke="#a8d5b5" stroke-width="1.5"/>
-  <text x="450" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="#2e7d52" letter-spacing="0.8">APP BUILDER</text>
+  <rect x="288"  y="10" width="865"  height="615" rx="10" fill="#f0faf3" stroke="#a8d5b5" stroke-width="1.5"/>
+  <text x="720"  y="31" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d52" letter-spacing="1">APP BUILDER</text>
 
-  <rect x="700" y="10" width="190" height="700" rx="8" fill="#fff8f0" stroke="#f0c89a" stroke-width="1.5"/>
-  <text x="795" y="30" text-anchor="middle" font-size="10" font-weight="700" fill="#b85c00" letter-spacing="0.8">EDS STOREFRONT</text>
+  <rect x="1163" y="10" width="267"  height="615" rx="10" fill="#fff8f0" stroke="#f0c89a" stroke-width="1.5"/>
+  <text x="1296" y="31" text-anchor="middle" font-size="11" font-weight="700" fill="#b85c00" letter-spacing="1">EDS STOREFRONT</text>
 
-  <!-- Commerce Admin: UI SDK -->
-  <rect x="25" y="42" width="160" height="44" rx="5" fill="#dce6ff" stroke="#8fa3e0" stroke-width="1.2"/>
-  <text x="105" y="60" text-anchor="middle" font-weight="600" fill="#2d3f8a">Admin UI SDK</text>
-  <text x="105" y="76" text-anchor="middle" font-size="10" fill="#4a5fa8">Commerce Admin iframe</text>
+  <!-- ── COMMERCE ADMIN CONTENTS ───────────────────────────────── -->
+  <rect x="26"  y="44" width="234" height="56" rx="6" fill="#dce6ff" stroke="#8fa3e0" stroke-width="1.2"/>
+  <text x="143" y="66" text-anchor="middle" font-weight="600" font-size="13" fill="#2d3f8a">Admin UI SDK</text>
+  <text x="143" y="84" text-anchor="middle" font-size="11" fill="#4a5fa8">Commerce Admin iframe</text>
 
-  <!-- 3 tabs -->
-  <rect x="30" y="100" width="150" height="26" rx="4" fill="#eef2ff" stroke="#b0bef5" stroke-width="1"/>
-  <text x="105" y="117" text-anchor="middle" fill="#3d52a8">Manage Rules</text>
-  <rect x="30" y="132" width="150" height="26" rx="4" fill="#eef2ff" stroke="#b0bef5" stroke-width="1"/>
-  <text x="105" y="149" text-anchor="middle" fill="#3d52a8">Manual Assignments</text>
-  <rect x="30" y="164" width="150" height="26" rx="4" fill="#eef2ff" stroke="#b0bef5" stroke-width="1"/>
-  <text x="105" y="181" text-anchor="middle" fill="#3d52a8">Active Badges</text>
+  <rect x="31"  y="115" width="224" height="30" rx="5" fill="#eef2ff" stroke="#b0bef5" stroke-width="1"/>
+  <text x="143" y="134" text-anchor="middle" font-size="12" fill="#3d52a8">Manage Rules</text>
 
-  <!-- product.save event -->
-  <rect x="25" y="610" width="160" height="44" rx="5" fill="#dce6ff" stroke="#8fa3e0" stroke-width="1.2"/>
-  <text x="105" y="628" text-anchor="middle" font-weight="600" fill="#2d3f8a">product.save</text>
-  <text x="105" y="644" text-anchor="middle" font-size="10" fill="#4a5fa8">I/O Event trigger</text>
+  <rect x="31"  y="151" width="224" height="30" rx="5" fill="#eef2ff" stroke="#b0bef5" stroke-width="1"/>
+  <text x="143" y="170" text-anchor="middle" font-size="12" fill="#3d52a8">Manual Assignments</text>
 
-  <!-- App Builder LEFT: CRUD Actions group -->
-  <rect x="226" y="42" width="196" height="328" rx="6" fill="#e2f4e9" stroke="#7bc49a" stroke-width="1"/>
-  <text x="324" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#2e7d52">ADMIN CRUD ACTIONS</text>
+  <rect x="31"  y="187" width="224" height="30" rx="5" fill="#eef2ff" stroke="#b0bef5" stroke-width="1"/>
+  <text x="143" y="206" text-anchor="middle" font-size="12" fill="#3d52a8">Active Badges</text>
 
-  <rect x="236" y="68" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="84" text-anchor="middle" font-size="10" fill="#1a5c38">save-badge-rule</text>
-  <rect x="236" y="97" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="113" text-anchor="middle" font-size="10" fill="#1a5c38">get-badge-rules</text>
-  <rect x="236" y="126" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="142" text-anchor="middle" font-size="10" fill="#1a5c38">delete-badge-rule</text>
+  <rect x="26"  y="547" width="234" height="56" rx="6" fill="#dce6ff" stroke="#8fa3e0" stroke-width="1.2"/>
+  <text x="143" y="569" text-anchor="middle" font-weight="600" font-size="13" fill="#2d3f8a">product.save</text>
+  <text x="143" y="587" text-anchor="middle" font-size="11" fill="#4a5fa8">I/O Event trigger</text>
 
-  <line x1="246" y1="157" x2="402" y2="157" stroke="#9dd4b0" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <!-- ── APP BUILDER: CRUD GROUP ───────────────────────────────── -->
+  <rect x="303" y="44" width="270" height="400" rx="7" fill="#e2f4e9" stroke="#7bc49a" stroke-width="1.2"/>
+  <text x="438" y="63"  text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d52" letter-spacing="0.5">ADMIN CRUD ACTIONS</text>
 
-  <rect x="236" y="163" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="179" text-anchor="middle" font-size="10" fill="#1a5c38">save-static-assignment</text>
-  <rect x="236" y="192" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="208" text-anchor="middle" font-size="10" fill="#1a5c38">get-static-assignments</text>
-  <rect x="236" y="221" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="237" text-anchor="middle" font-size="10" fill="#1a5c38">delete-static-assignment</text>
+  <rect x="315" y="71"  width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="89"  text-anchor="middle" font-size="12" fill="#1a5c38">save-badge-rule</text>
+  <rect x="315" y="104" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="122" text-anchor="middle" font-size="12" fill="#1a5c38">get-badge-rules</text>
+  <rect x="315" y="137" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="155" text-anchor="middle" font-size="12" fill="#1a5c38">delete-badge-rule</text>
 
-  <line x1="246" y1="252" x2="402" y2="252" stroke="#9dd4b0" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="325" y1="173" x2="557" y2="173" stroke="#9dd4b0" stroke-width="0.8" stroke-dasharray="3,2"/>
 
-  <rect x="236" y="258" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="274" text-anchor="middle" font-size="10" fill="#1a5c38">get-products</text>
-  <rect x="236" y="287" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="303" text-anchor="middle" font-size="10" fill="#1a5c38">get-badge-catalog</text>
-  <rect x="236" y="316" width="176" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="324" y="332" text-anchor="middle" font-size="10" fill="#1a5c38">get-badge-states</text>
+  <rect x="315" y="179" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="197" text-anchor="middle" font-size="12" fill="#1a5c38">save-static-assignment</text>
+  <rect x="315" y="212" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="230" text-anchor="middle" font-size="12" fill="#1a5c38">get-static-assignments</text>
+  <rect x="315" y="245" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="263" text-anchor="middle" font-size="12" fill="#1a5c38">delete-static-assignment</text>
 
-  <!-- setup-collections standalone box -->
-  <rect x="226" y="384" width="196" height="30" rx="6" fill="#d4f0dc" stroke="#5ca87a" stroke-width="1.2"/>
-  <text x="324" y="403" text-anchor="middle" font-size="10" font-weight="700" fill="#1a5c38">setup-collections</text>
-  <text x="324" y="424" text-anchor="middle" font-size="9" fill="#2e7d52">one-time DB init · seeds badge_catalog</text>
+  <line x1="325" y1="281" x2="557" y2="281" stroke="#9dd4b0" stroke-width="0.8" stroke-dasharray="3,2"/>
 
-  <!-- App Builder RIGHT: product-badge -->
-  <rect x="442" y="42" width="232" height="48" rx="6" fill="#fff" stroke="#7bc49a" stroke-width="1.2"/>
-  <text x="558" y="62" text-anchor="middle" font-weight="600" fill="#1a5c38">product-badge</text>
-  <text x="558" y="78" text-anchor="middle" font-size="10" fill="#2e7d52">public read · CORS restricted · web-custom-options</text>
+  <rect x="315" y="287" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="305" text-anchor="middle" font-size="12" fill="#1a5c38">get-products</text>
+  <rect x="315" y="320" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="338" text-anchor="middle" font-size="12" fill="#1a5c38">get-badge-catalog</text>
+  <rect x="315" y="353" width="246" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="438" y="371" text-anchor="middle" font-size="12" fill="#1a5c38">get-badge-states</text>
 
-  <!-- aio-lib-db with 5 collections -->
-  <rect x="442" y="115" width="232" height="210" rx="6" fill="#e2f4e9" stroke="#7bc49a" stroke-width="1"/>
-  <text x="558" y="133" text-anchor="middle" font-size="10" font-weight="700" fill="#2e7d52">aio-lib-db (amer region)</text>
+  <!-- setup-collections (standalone, below CRUD group) -->
+  <rect x="303" y="458" width="270" height="36" rx="7" fill="#d4f0dc" stroke="#5ca87a" stroke-width="1.2"/>
+  <text x="438" y="480" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5c38">setup-collections</text>
+  <text x="438" y="510" text-anchor="middle" font-size="10" fill="#2e7d52">one-time DB init · seeds badge_catalog</text>
 
-  <rect x="452" y="140" width="212" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="558" y="156" text-anchor="middle" font-size="10" fill="#1a5c38">badge_catalog</text>
-  <rect x="452" y="169" width="212" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="558" y="185" text-anchor="middle" font-size="10" fill="#1a5c38">badge_rules</text>
-  <rect x="452" y="198" width="212" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="558" y="214" text-anchor="middle" font-size="10" fill="#1a5c38">badge_assignments</text>
-  <rect x="452" y="227" width="212" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="558" y="243" text-anchor="middle" font-size="10" fill="#1a5c38">badge_state</text>
-  <rect x="452" y="256" width="212" height="24" rx="4" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
-  <text x="558" y="272" text-anchor="middle" font-size="10" fill="#1a5c38">collection_data_versions</text>
+  <!-- ── APP BUILDER: product-badge ────────────────────────────── -->
+  <rect x="598" y="44" width="535" height="56" rx="7" fill="#fff" stroke="#7bc49a" stroke-width="1.2"/>
+  <text x="865" y="67"  text-anchor="middle" font-weight="600" font-size="13" fill="#1a5c38">product-badge</text>
+  <text x="865" y="86"  text-anchor="middle" font-size="11" fill="#2e7d52">public read · CORS restricted · web-custom-options</text>
 
-  <!-- product-event-consumer -->
-  <rect x="442" y="350" width="232" height="44" rx="6" fill="#fff" stroke="#7bc49a" stroke-width="1.2"/>
-  <text x="558" y="368" text-anchor="middle" font-weight="600" fill="#1a5c38">product-event-consumer</text>
-  <text x="558" y="384" text-anchor="middle" font-size="10" fill="#2e7d52">non-web · triggered by I/O Events</text>
+  <!-- ── APP BUILDER: aio-lib-db ───────────────────────────────── -->
+  <rect x="598" y="118" width="535" height="268" rx="7" fill="#e2f4e9" stroke="#7bc49a" stroke-width="1.2"/>
+  <text x="865" y="138" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d52">aio-lib-db (amer region)</text>
+
+  <rect x="612" y="147" width="507" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="865" y="165" text-anchor="middle" font-size="12" fill="#1a5c38">badge_catalog</text>
+  <rect x="612" y="181" width="507" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="865" y="199" text-anchor="middle" font-size="12" fill="#1a5c38">badge_rules</text>
+  <rect x="612" y="215" width="507" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="865" y="233" text-anchor="middle" font-size="12" fill="#1a5c38">badge_assignments</text>
+  <rect x="612" y="249" width="507" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="865" y="267" text-anchor="middle" font-size="12" fill="#1a5c38">badge_state</text>
+  <rect x="612" y="283" width="507" height="28" rx="5" fill="#fff" stroke="#9dd4b0" stroke-width="1"/>
+  <text x="865" y="301" text-anchor="middle" font-size="12" fill="#1a5c38">collection_data_versions</text>
+
+  <!-- ── APP BUILDER: product-event-consumer ───────────────────── -->
+  <rect x="598" y="406" width="535" height="55" rx="7" fill="#fff" stroke="#7bc49a" stroke-width="1.2"/>
+  <text x="865" y="428" text-anchor="middle" font-weight="600" font-size="13" fill="#1a5c38">product-event-consumer</text>
+  <text x="865" y="447" text-anchor="middle" font-size="11" fill="#2e7d52">non-web · triggered by I/O Events</text>
 
   <!-- evaluator.js -->
-  <rect x="442" y="410" width="232" height="30" rx="6" fill="#d4edda" stroke="#7bc49a" stroke-width="1.2"/>
-  <text x="558" y="429" text-anchor="middle" font-weight="600" font-size="11" fill="#1a5c38">evaluator.js</text>
-  <text x="558" y="452" text-anchor="middle" font-size="9" fill="#2e7d52">evaluates rules + assignments, writes badge_state</text>
+  <rect x="598" y="476" width="535" height="40" rx="7" fill="#d4edda" stroke="#7bc49a" stroke-width="1.2"/>
+  <text x="865" y="501" text-anchor="middle" font-weight="600" font-size="13" fill="#1a5c38">evaluator.js</text>
+  <text x="865" y="528" text-anchor="middle" font-size="10" fill="#2e7d52">evaluates rules + assignments, writes badge_state</text>
 
-  <!-- EDS Storefront -->
-  <rect x="716" y="42" width="160" height="54" rx="6" fill="#ffe8cc" stroke="#f0a855" stroke-width="1.2"/>
-  <text x="796" y="65" text-anchor="middle" font-weight="600" fill="#b85c00">PDP Block</text>
-  <text x="796" y="82" text-anchor="middle" font-size="10" fill="#b85c00">badge chip renders</text>
+  <!-- ── EDS STOREFRONT ─────────────────────────────────────────── -->
+  <rect x="1178" y="44" width="237" height="62" rx="7" fill="#ffe8cc" stroke="#f0a855" stroke-width="1.2"/>
+  <text x="1296" y="68"  text-anchor="middle" font-weight="600" font-size="13" fill="#b85c00">PDP Block</text>
+  <text x="1296" y="88"  text-anchor="middle" font-size="11" fill="#b85c00">badge chip renders</text>
 
-  <!-- Arrows -->
-  <line x1="186" y1="113" x2="224" y2="113" stroke="#8fa3e0" stroke-width="1.5" marker-end="url(#ab)"/>
-  <line x1="186" y1="145" x2="224" y2="175" stroke="#8fa3e0" stroke-width="1.5" marker-end="url(#ab)"/>
-  <line x1="186" y1="177" x2="224" y2="300" stroke="#8fa3e0" stroke-width="1.5" marker-end="url(#ab)"/>
+  <!-- ── ARROWS ─────────────────────────────────────────────────── -->
 
-  <line x1="422" y1="215" x2="440" y2="215" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#ag)" marker-start="url(#ag2)"/>
-  <text x="431" y="210" text-anchor="middle" font-size="8" fill="#2e7d52">r/w</text>
+  <!-- Admin tabs → CRUD actions -->
+  <line x1="255" y1="129" x2="301" y2="85"  stroke="#8fa3e0" stroke-width="1.5" marker-end="url(#ab)"/>
+  <line x1="255" y1="165" x2="301" y2="193" stroke="#8fa3e0" stroke-width="1.5" marker-end="url(#ab)"/>
+  <line x1="255" y1="201" x2="301" y2="355" stroke="#8fa3e0" stroke-width="1.5" marker-end="url(#ab)"/>
 
-  <path d="M 558 90 L 558 113" stroke="#2e7d52" stroke-width="1.5" fill="none" marker-end="url(#ag)" stroke-dasharray="4,3"/>
-  <text x="572" y="104" font-size="9" fill="#2e7d52">reads</text>
+  <!-- CRUD ↔ aio-lib-db (bidirectional r/w) -->
+  <line x1="575" y1="245" x2="596" y2="245" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#ag)" marker-start="url(#ag2)"/>
+  <text x="585" y="239" text-anchor="middle" font-size="9" fill="#2e7d52">r/w</text>
 
-  <line x1="558" y1="394" x2="558" y2="408" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#ag)"/>
+  <!-- product-badge → aio-lib-db (reads, dashed down) -->
+  <path d="M 865 100 L 865 116" stroke="#2e7d52" stroke-width="1.5" fill="none" marker-end="url(#ag)" stroke-dasharray="4,3"/>
+  <text x="879" y="111" font-size="10" fill="#2e7d52">reads</text>
 
-  <path d="M 442 425 Q 400 425 400 210 Q 400 175 440 175" stroke="#2e7d52" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#ag)"/>
+  <!-- product-event-consumer → evaluator.js -->
+  <line x1="865" y1="461" x2="865" y2="474" stroke="#2e7d52" stroke-width="1.5" marker-end="url(#ag)"/>
 
-  <path d="M 186 632 Q 380 632 440 372" stroke="#8fa3e0" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#ab)"/>
+  <!-- evaluator.js → aio-lib-db (curved left, dashed) -->
+  <path d="M 598 496 Q 552 496 552 252 Q 552 165 596 165" stroke="#2e7d52" stroke-width="1.5" fill="none" stroke-dasharray="4,3" marker-end="url(#ag)"/>
 
-  <line x1="714" y1="69" x2="676" y2="66" stroke="#d97706" stroke-width="1.5" marker-end="url(#ao)"/>
-  <text x="693" y="58" text-anchor="middle" font-size="9" fill="#b85c00">GET ?sku=X</text>
+  <!-- product.save → product-event-consumer (curved, dashed) -->
+  <path d="M 261 572 Q 440 572 440 430 Q 440 428 596 428" stroke="#8fa3e0" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#ab)"/>
+
+  <!-- PDP Block → product-badge (GET ?sku=X) -->
+  <line x1="1176" y1="72" x2="1135" y2="72" stroke="#d97706" stroke-width="1.5" marker-end="url(#ao)"/>
+  <text x="1296" y="122" text-anchor="middle" font-size="10" fill="#b85c00">GET ?sku=X</text>
+
 </svg>
