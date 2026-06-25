@@ -2,6 +2,7 @@
 // writes result to badge_state.
 const { Core } = require('@adobe/aio-sdk')
 const libDb = require('@adobe/aio-lib-db')
+const stateLib = require('@adobe/aio-lib-state')
 const fetch = require('node-fetch')
 const { generateAccessToken } = require('../auth')
 const { evaluateRule } = require('./evaluator')
@@ -35,6 +36,18 @@ async function main(params) {
   const logger = Core.Logger('product-event-consumer', { level: params.LOG_LEVEL || 'info' })
 
   try {
+    const eventId = params.event_id
+    let state = null
+
+    if (eventId) {
+      state = await stateLib.init()
+      const seen = await state.get(`event-${eventId}`)
+      if (seen?.value) {
+        logger.info(`Duplicate event ${eventId} skipped`)
+        return { statusCode: 200, body: { status: 'skipped', message: 'Already processed', eventId } }
+      }
+    }
+
     const sku = params.data?.value?.sku
     if (!sku) {
       logger.error('No SKU found in event payload')
@@ -74,6 +87,7 @@ async function main(params) {
         rule_name: matchedRule.name
       })
       logger.info(`Badge state written: ${matchedRule.badge_id} from rule ${matchedRule.name}`)
+      if (eventId && state) await state.put(`event-${eventId}`, '1', { ttl: 86400 })
       return { statusCode: 200, body: { status: 'ok', sku, badge_id: matchedRule.badge_id, source: 'rule' } }
     }
 
@@ -89,6 +103,7 @@ async function main(params) {
         rule_name: null
       })
       logger.info(`Badge state written: ${validAssignment.badge_id} from static assignment`)
+      if (eventId && state) await state.put(`event-${eventId}`, '1', { ttl: 86400 })
       return { statusCode: 200, body: { status: 'ok', sku, badge_id: validAssignment.badge_id, source: 'static' } }
     }
 
@@ -98,6 +113,7 @@ async function main(params) {
       rule_name: null
     })
     logger.info(`No badge matched for SKU: ${sku}, badge state cleared`)
+    if (eventId && state) await state.put(`event-${eventId}`, '1', { ttl: 86400 })
     return { statusCode: 200, body: { status: 'ok', sku, badge_id: null, source: null } }
 
   } catch (error) {

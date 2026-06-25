@@ -232,6 +232,11 @@ aio runtime activation list
 
 # Get full details of a specific activation
 aio runtime activation get <activation-id>
+
+# Manually invoke a non-web action with a test payload (runs the deployed action in the cloud)
+# Edit test/badge-event-test.json to change the SKU or event_id before running
+# Change event_id each time to bypass the idempotency check and force a fresh evaluation
+aio runtime action invoke capstone-appbuilder/product-event-consumer --param-file test/badge-event-test.json --result
 ```
 
 ---
