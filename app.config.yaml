@@ -29,6 +29,7 @@ application:
               IMS_TOKEN_URL: $IMS_TOKEN_URL
             annotations:
               require-adobe-auth: false
+              web-custom-options: true
               final: true
           setup-collections:
             function: actions/setup-collections/index.js
